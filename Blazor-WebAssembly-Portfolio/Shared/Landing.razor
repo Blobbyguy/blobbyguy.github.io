@@ -1,6 +1,96 @@
 ﻿
+
 <MudPaper Height="100vh" Width="100%" Class="mud-theme-primary">
-    <MudContainer>
-        <h1>G'Day!</h1>
-    </MudContainer>
+    <MudStack Style="height:100%; width:100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
+        <MudStack Row="true" Spacing="0">
+            <h1 style="margin-right: 0px; padding-right: 0px; font-size: 12rem">@greeting</h1>
+            <h1 style="margin-left: 0px; padding-left: 0px; text-align:left; opacity: @barOpacity; font-size: 12rem">@bar</h1>
+        </MudStack>
+        
+        <h2>A Work In Progress</h2>
+    </MudStack>
 </MudPaper>
+
+@implements IDisposable
+@code{
+    List<string> _greetingOptions = new List<string> { "Hello.", "Hi.", "G\'day.", "Welcome." };
+
+    string greeting = "";
+
+
+    PeriodicTimer _barTimer;
+
+    private bool showBar = false;
+    private string bar => "|";
+    private int barOpacity => showBar ? 1 : 0;
+
+    private bool scrollAnimation = true;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        StartBar();
+        StartGreetingScroll();
+
+        return base.OnInitializedAsync();
+    }
+
+    private async void StartBar()
+    {
+        _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.5));
+
+        while (await _barTimer.WaitForNextTickAsync())
+        {
+            ToggleBar();
+        }
+    }
+
+    private async void StartGreetingScroll()
+    {
+        scrollAnimation = true;
+        while (scrollAnimation == true)
+        {
+            var typingGreeting = _greetingOptions.GetRandomElement();
+            var queue = new Queue<char>(typingGreeting.ToCharArray());
+            while (queue.Count > 0)
+            {
+                greeting += queue.Dequeue();
+                StateHasChanged();
+                await Task.Delay(500);
+            }
+
+            await Task.Delay(1000);
+
+            while (!String.IsNullOrEmpty(greeting))
+            {
+                if (greeting.Length == 1)
+                {
+                    greeting = String.Empty;
+                }
+                else
+                {
+                    greeting = greeting.Substring(0, greeting.Length - 1);
+                }
+                StateHasChanged();
+                await Task.Delay(500);
+            }
+
+            await Task.Delay(300);
+        }
+
+    }
+
+    public void Dispose()
+    {
+        _barTimer?.Dispose();
+    }
+
+    private void ToggleBar()
+    {
+        showBar = !showBar;
+        StateHasChanged();
+    }
+}
