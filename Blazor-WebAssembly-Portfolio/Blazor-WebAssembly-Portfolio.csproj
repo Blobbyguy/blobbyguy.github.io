@@ -18,4 +18,10 @@
     <PackageReference Include="MudBlazor" Version="6.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Shared\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\Extensions\" />
+  </ItemGroup>
 </Project>
