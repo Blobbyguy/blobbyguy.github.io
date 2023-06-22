@@ -1,96 +1,91 @@
-﻿
-
-<MudPaper Height="100vh" Width="100%" Class="mud-theme-primary">
-    <MudStack Style="height:100%; width:100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
-        <MudStack Row="true" Spacing="0">
-            <h1 style="margin-right: 0px; padding-right: 0px; font-size: 12rem">@greeting</h1>
-            <h1 style="margin-left: 0px; padding-left: 0px; text-align:left; opacity: @barOpacity; font-size: 12rem">@bar</h1>
-        </MudStack>
-        
-        <h2>A Work In Progress</h2>
-    </MudStack>
+﻿<MudPaper Height="100vh" Width="100%" Class="mud-theme-primary">
+	<MudStack Style="height:100%; width:100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
+		<MudStack Row="true" Spacing="0">
+			<h1 style="margin-right: 0px; padding-right: 0px; font-size: 12rem">@greeting</h1>
+			<h1 style="margin-left: 0px; padding-left: 0px; text-align:left; opacity: @barOpacity; font-size: 12rem">@bar</h1>
+		</MudStack>
+		
+		<h2>A Work In Progress</h2>
+	</MudStack>
 </MudPaper>
 
 @implements IDisposable
 @code{
-    List<string> _greetingOptions = new List<string> { "Hello.", "Hi.", "G\'day.", "Welcome." };
+	List<string> _greetingOptions = new List<string> { "Hello.", "Hi.", "G\'day.", "Welcome." };
 
-    string greeting = "";
+	string greeting = "";
 
+	PeriodicTimer? _barTimer;
 
-    PeriodicTimer _barTimer;
+	private bool showBar = false;
+	private string bar => "|";
+	private int barOpacity => showBar ? 1 : 0;
 
-    private bool showBar = false;
-    private string bar => "|";
-    private int barOpacity => showBar ? 1 : 0;
+	private bool scrollAnimation = true;
+	protected override void OnInitialized()
+	{
+		StartGreetingScroll();
+		showBar = true;
 
-    private bool scrollAnimation = true;
-    protected override void OnInitialized()
-    {
-        base.OnInitialized();
-    }
+		base.OnInitialized();
+	}
 
-    protected override Task OnInitializedAsync()
-    {
-        StartBar();
-        StartGreetingScroll();
+	private async void StartBar()
+	{
+		_barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.5));
 
-        return base.OnInitializedAsync();
-    }
+		while (await _barTimer.WaitForNextTickAsync())
+		{
+			ToggleBar();
+		}
+	}
 
-    private async void StartBar()
-    {
-        _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.5));
+	private void StopBar()
+	{
+		_barTimer?.Dispose();
+	}
 
-        while (await _barTimer.WaitForNextTickAsync())
-        {
-            ToggleBar();
-        }
-    }
+	private async void StartGreetingScroll()
+	{
+		scrollAnimation = true;
+		while (scrollAnimation == true)
+		{
+			foreach (var character in _greetingOptions.GetRandomElement().ToCharArray())
+			{
+				greeting += character;
+				StateHasChanged();
+				await Task.Delay(500);
+			}
 
-    private async void StartGreetingScroll()
-    {
-        scrollAnimation = true;
-        while (scrollAnimation == true)
-        {
-            var typingGreeting = _greetingOptions.GetRandomElement();
-            var queue = new Queue<char>(typingGreeting.ToCharArray());
-            while (queue.Count > 0)
-            {
-                greeting += queue.Dequeue();
-                StateHasChanged();
-                await Task.Delay(500);
-            }
+			StartBar();
+			await Task.Delay(2000);
+			StopBar();
+			showBar = true;
 
-            await Task.Delay(1000);
+			while (!String.IsNullOrEmpty(greeting))
+			{
+				greeting = greeting.Substring(0, greeting.Length - 1);
 
-            while (!String.IsNullOrEmpty(greeting))
-            {
-                if (greeting.Length == 1)
-                {
-                    greeting = String.Empty;
-                }
-                else
-                {
-                    greeting = greeting.Substring(0, greeting.Length - 1);
-                }
-                StateHasChanged();
-                await Task.Delay(500);
-            }
+				StateHasChanged();
+				await Task.Delay(250);
+			}
 
-            await Task.Delay(300);
-        }
+			StartBar();
+			await Task.Delay(1500);
+			StopBar();
+			showBar = true;
+		}
 
-    }
+	}
 
-    public void Dispose()
-    {
-        _barTimer?.Dispose();
-    }
+	public void Dispose()
+	{
+		StopBar();
+	}
 
-    private void ToggleBar()
-    {
-        showBar = !showBar;
-        StateHasChanged();
-    }
+	private void ToggleBar()
+	{
+		showBar = !showBar;
+		StateHasChanged();
+	}
 }
