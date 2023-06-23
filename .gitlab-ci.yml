@@ -5,7 +5,9 @@ pages:
     - dotnet publish
       Blazor-WebAssembly-Portfolio/Blazor-WebAssembly-Portfolio.csproj -c
       Release -o release --nologo
-    - sed -i 's/<base href="\/" \/>/<base href="\/Blazor-WebAssembly-Portfolio\/" \/>/g' release/wwwroot/index.html
+
+      #Update the base path. E.g. blobbyguy.gitlab.io/test
+    #- sed -i 's/<base href="\/" \/>/<base href="\/Blazor-WebAssembly-Portfolio\/" \/>/g' release/wwwroot/index.html
     - touch release/wwwroot/.nojekyll
     - cp -a release/wwwroot public
   artifacts:
