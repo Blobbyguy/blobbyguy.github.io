@@ -1,0 +1,18 @@
+# The Docker image that will be used to build your app
+image: mcr.microsoft.com/dotnet/sdk:6.0
+pages:
+  script:
+    - dotnet publish
+      Blazor-WebAssembly-Portfolio/Blazor-WebAssembly-Portfolio.csproj -c
+      Release -o public --nologo
+    - sed -i 's/<base href="\/" \/>/<base
+      href="\/Blazor-WebAssembly-Portfolio\/" \/>/g' public/wwwroot/index.html
+    - touch public/wwwroot/.nojekyll
+  artifacts:
+    paths:
+      # The folder that contains the files to be exposed at the Page URL
+      - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
