@@ -4,4 +4,4 @@
 
 Portfolio
 
-URL: https://blobbyguy.github.io/Blazor-WebAssembly-Portfolio/
+URL: https://blobbyguy.gitlab.io
