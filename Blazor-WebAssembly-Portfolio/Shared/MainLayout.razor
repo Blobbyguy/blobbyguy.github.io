@@ -1,13 +1,30 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme="_theme" />
 @*<MudDialogProvider />*@
 @*<MudSnackbarProvider />*@
 
 <MudLayout>
-
-    <MudMainContent Style="padding: 0px;">
-        @Body
-    </MudMainContent>
+	<MudMainContent Style="padding: 0px;">
+		@Body
+	</MudMainContent>
 </MudLayout>
+
+@code{
+	//https://mudblazor.com/customization/default-theme#palette
+	private MudTheme _theme = new()
+	{
+		Palette = new PaletteLight()
+		{
+			Primary = Colors.Green.Default
+		},
+
+		PaletteDark = new PaletteDark()
+		{
+
+		}
+	};
+
+	private bool _isDarkMode = false;
+}
 
