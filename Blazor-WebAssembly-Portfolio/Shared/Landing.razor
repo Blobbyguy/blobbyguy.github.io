@@ -1,18 +1,16 @@
-﻿<MudPaper Height="100vh" Width="100%" Class="mud-theme-primary">
-	<MudStack Style="height:100%; width:100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
-		<MudStack Row="true" Spacing="0">
-			<h1 style="margin-right: 0px; padding-right: 0px; font-size: 12rem">@greeting</h1>
-			<h1 style="margin-left: 0px; padding-left: 0px; text-align:left; opacity: @barOpacity; font-size: 12rem">@bar</h1>
-		</MudStack>
-		
-		<h2>A Work In Progress</h2>
-	</MudStack>
-</MudPaper>
+﻿<MudStack Style="height:100vh; width: 100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
+    <h2 class="fadeIn">Welcome to my portfolio</h2>
+    <MudStack Row="true" Spacing="0">
+        <h1 class="landingHeading fadeIn" style="animation-delay:2s">@greeting</h1>
+        <h1 class="landingHeading fadeIn" style="animation-delay: 2s; opacity: @barOpacity;">@bar</h1>
+    </MudStack>
+    <h2 class="fadeIn" style="animation-delay: 3s;">A Work In Progress</h2>
+</MudStack>
+
 
 @implements IDisposable
 @code{
 	List<string> _greetingOptions = new List<string> { "Hello.", "Hi.", "G\'day.", "Welcome." };
-
 	string greeting = "";
 
 	PeriodicTimer? _barTimer;
@@ -22,8 +20,9 @@
 	private int barOpacity => showBar ? 1 : 0;
 
 	private bool scrollAnimation = true;
-	protected override void OnInitialized()
+	protected override async void OnInitialized()
 	{
+		await Task.Delay(3000);
 		StartGreetingScroll();
 		showBar = true;
 
