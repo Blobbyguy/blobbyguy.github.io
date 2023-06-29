@@ -1,8 +1,19 @@
 ﻿@page "/"
 
-<MudStack Spacing="0">
-    <Landing />
-    <Projects />
-</MudStack>
+<!--<MudStack Spacing="5">-->
+<Landing />
+<MudContainer MaxWidth="MaxWidth.Large" Class="d-flex align-start">
+    <MudItem Class="sticky" style="width: 100%; top: 20%; padding-left: 10%;">
+        <Blurb />
+    </MudItem>
+    <MudItem style="width:100%;">
+        <MudStack>
+            <AboutMe/>
+            <Experience/>
+            <Projects/>
+        </MudStack>
+    </MudItem>
+</MudContainer>
+<!--</MudStack> -->
 
 
