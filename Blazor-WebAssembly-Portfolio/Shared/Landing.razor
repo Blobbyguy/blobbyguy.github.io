@@ -30,11 +30,6 @@
         base.OnInitialized();
     }
 
-    async Task ScrolltoProject()
-    {
-        await javaScript.InvokeVoidAsync("ScrollTo", "Contact");
-    }
-
     private async void StartBar()
     {
         _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.5));

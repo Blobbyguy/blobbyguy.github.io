@@ -1,9 +1,8 @@
 ﻿
 
+@inject NavigationManager NavigationManager
 <MudStack>
-    <a href="#about">#example</a>
-    <MudButton Href="#about">About</MudButton>
-    <MudButton Href="#experience">Experience</MudButton>
-    <MudButton Href="#projects">Projects</MudButton>
+    <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">about</a>
+    <a onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">experience</a>
+    <a onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">projects</a>
 </MudStack>
-
