@@ -21,11 +21,9 @@
   <ItemGroup>
     <None Remove="Shared\Extensions\" />
     <None Remove="Shared\SocialIcons\" />
-    <None Remove="Shared\Javascript\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\Extensions\" />
     <Folder Include="Shared\SocialIcons\" />
-    <Folder Include="Shared\Javascript\" />
   </ItemGroup>
 </Project>
