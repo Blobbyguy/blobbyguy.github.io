@@ -1,23 +1,8 @@
 ﻿@namespace BlazorWebAssemblyPortfolio.Shared.Experience
 <MudTimeline id="experience">
-    <MudTimelineItem>
-        <ItemOpposite>
-            <MudText> Dec 2020 - Jan 2022 </MudText>
-        </ItemOpposite>
-        <ItemContent>
-            <MudPaper Elevation="0" Class="mt-n1">
-                <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">MudBlazor Emerges</MudText>
-                <MudText Typo="Typo.body2">
-                    A repository pops up on Github named MudBlazor.\n
-                    The development has already started and the most common components can be found already
-                </MudText>
-            </MudPaper>
-        </ItemContent>
-    </MudTimelineItem>
-
     @foreach(var item in config.Items)
     {
-         <ExperienceItem Body="@item.Body" Date="@item.Date" Heading="@item.Header"></ExperienceItem>
+         <ExperienceItem Body="@item.Description" Date="@item.Date" Heading="@item.Company" Subheading="@item.Role"></ExperienceItem>
     }
 </MudTimeline>
 

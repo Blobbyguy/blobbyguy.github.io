@@ -7,9 +7,11 @@
 
 	public class ExperienceDataItem
 	{
-		public string Header { get; set; } = "";
+		public string Company { get; set; } = "";
 
-		public string Body { get; set; } = "";
+		public string Role { get; set; } = "";
+
+		public string Description { get; set; } = "";
 
 		public string Date { get; set; } = "";
 	}
