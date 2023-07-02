@@ -32,7 +32,7 @@
 
     private async void StartBar()
     {
-        _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.5));
+        _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.2));
 
         while (await _barTimer.WaitForNextTickAsync())
         {
