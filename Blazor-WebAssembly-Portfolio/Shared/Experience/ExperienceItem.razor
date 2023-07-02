@@ -1,15 +1,22 @@
 ﻿@namespace BlazorWebAssemblyPortfolio.Shared.Experience
 
-<MudTimelineItem>
-    <ItemOpposite>
+<MudTimelineItem   TimelineAlign="TimelineAlign.End" Size="Size.Medium">
+    <ItemOpposite >
         <MudText>@Date</MudText>
     </ItemOpposite>
-    <ItemContent>
-        <MudPaper Elevation="0" Class="mt-n1">
-            <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
-            <MudText Color="Color.Dark" Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
-            <MudText Typo="Typo.body2">@Body</MudText>
-        </MudPaper>
+    <ItemContent >
+            <MudPaper Elevation="0" Class="mt-n1">
+                <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
+                <MudText Color="Color.Dark" Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
+                <MudText Typo="Typo.body2">@Body</MudText>
+            </MudPaper>
+
+            @foreach (var chip in Attributes)
+            {
+                <MudChip>
+                    @chip
+                </MudChip>
+            }
     </ItemContent>
 </MudTimelineItem>
 
@@ -25,5 +32,8 @@
 
     [Parameter]
     public string Date { get; set; } = "";
+
+    [Parameter]
+    public List<String> Attributes { get; set; } = new();
 }
-    
+

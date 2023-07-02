@@ -1,8 +1,13 @@
 ﻿@namespace BlazorWebAssemblyPortfolio.Shared.Experience
-<MudTimeline id="experience">
-    @foreach(var item in config.Items)
+<MudTimeline DisableModifiers="true" TimelinePosition="TimelinePosition.Start" TimelineAlign="TimelineAlign.Default" id="experience">
+    @foreach (var item in config.Items)
     {
-         <ExperienceItem Body="@item.Description" Date="@item.Date" Heading="@item.Company" Subheading="@item.Role"></ExperienceItem>
+        <ExperienceItem Body="@item.Description"
+                        Date="@item.Date"
+                        Heading="@item.Company"
+                        Subheading="@item.Role"
+                        Attributes="@item.Skills">
+        </ExperienceItem>
     }
 </MudTimeline>
 
