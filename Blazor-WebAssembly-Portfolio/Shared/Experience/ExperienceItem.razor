@@ -1,0 +1,25 @@
+﻿@namespace BlazorWebAssemblyPortfolio.Shared.Experience
+
+<MudTimelineItem>
+    <ItemOpposite>
+        <MudText>  </MudText>
+    </ItemOpposite>
+    <ItemContent>
+        <MudPaper Elevation="0" Class="mt-n1">
+            <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true"></MudText>
+            <MudText Typo="Typo.body2">@Body</MudText>
+        </MudPaper>
+    </ItemContent>
+</MudTimelineItem>
+
+@code{
+    [Parameter]
+    public string Heading { get; set; } = "";
+
+    [Parameter]
+    public string Body { get; set; } = "";
+
+    [Parameter]
+    public string Date { get; set; } = "";
+}
+    

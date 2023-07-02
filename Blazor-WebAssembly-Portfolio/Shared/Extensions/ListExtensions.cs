@@ -1,5 +1,4 @@
-﻿using System;
-namespace BlazorWebAssemblyPortfolio.Shared.Extensions
+﻿namespace BlazorWebAssemblyPortfolio.Shared.Extensions
 {
 	public static class ListExtensions
 	{
