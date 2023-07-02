@@ -1,5 +1,5 @@
 ﻿@namespace BlazorWebAssemblyPortfolio.Shared.Experience
-<MudTimeline DisableModifiers="true" TimelinePosition="TimelinePosition.Start" TimelineAlign="TimelineAlign.Default" id="experience">
+<MudTimeline TimelineAlign="TimelineAlign.Default" TimelinePosition="TimelinePosition.Start" id="experience">
     @foreach (var item in config.Items)
     {
         <ExperienceItem Body="@item.Description"
@@ -10,4 +10,5 @@
         </ExperienceItem>
     }
 </MudTimeline>
+<MudButton>View Full Resume</MudButton>
 
