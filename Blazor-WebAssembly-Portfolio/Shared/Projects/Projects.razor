@@ -1,10 +1,38 @@
 ﻿@namespace BlazorWebAssemblyPortfolio.Shared.Projects
 
-<h1> projects </h1>
 <MudStack>
     @foreach (var item in config.Items)
     {
-            <MudText>@item.Title</MudText>
+        <MudCard Outlined="true">
+            <MudCardContent>
+
+                <MudStack Row="true">
+                    <MudImage Height="200" Src="@item.imagePath" Alt="Image of Project" ></MudImage>
+
+                    <MudPaper>
+                        <MudText Typo="Typo.h6">@item.Title</MudText>
+                        <MudText Typo="Typo.subtitle1">@item.Subtitle</MudText>
+
+                        <MudText Typo="Typo.body2">@item.Description</MudText>
+
+                        <MudPaper>
+                            @foreach (var chip in item.Skills)
+                            {
+                                <MudChip>
+                                    @chip
+                                </MudChip>
+                            }
+                        </MudPaper>
+                    </MudPaper>
+
+
+                </MudStack>
+
+            </MudCardContent>
+
+        </MudCard>
+
+
     }
 </MudStack>
 
