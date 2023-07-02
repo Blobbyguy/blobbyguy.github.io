@@ -29,9 +29,11 @@
 
   <ItemGroup>
     <None Remove="Shared\Extensions\" />
+    <None Remove="Shared\Projects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\Extensions\" />
+    <Folder Include="Shared\Projects\" />
   </ItemGroup>
     <ItemGroup>
     <None Remove="Shared\Experience\" />

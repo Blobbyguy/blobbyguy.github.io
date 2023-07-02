@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
 using BlazorWebAssemblyPortfolio.Shared.Experience;
+using BlazorWebAssemblyPortfolio.Shared.Projects;
 using Blazor_WebAssembly_Portfolio;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -22,6 +23,12 @@ builder.Services.AddSingleton<ExperienceData>(
 	 {
 		var config = provider.GetService<IConfiguration>();
 		return config.GetSection("Experiences").Get<ExperienceData>();
+	 });
+builder.Services.AddSingleton<ProjectData>(
+	 provider =>
+	 {
+		 var config = provider.GetService<IConfiguration>();
+		 return config.GetSection("Projects").Get<ProjectData>();
 	 });
 
 await builder.Build().RunAsync();

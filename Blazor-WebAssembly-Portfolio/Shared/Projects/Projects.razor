@@ -1,0 +1,11 @@
+﻿@namespace BlazorWebAssemblyPortfolio.Shared.Projects
+
+<h1> projects </h1>
+<MudStack>
+    @foreach (var item in config.Items)
+    {
+            <MudText>@item.Title</MudText>
+    }
+</MudStack>
+
+
