@@ -11,7 +11,7 @@
             <MudText Color="Color.Dark" Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
             @foreach(var desc in Body)
             {
-                <MudText Typo="Typo.body2">@desc</MudText>
+                <MudText Typo="Typo.body2">@((MarkupString)desc)</MudText>
             }
             
         </MudPaper>

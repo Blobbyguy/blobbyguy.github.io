@@ -30,10 +30,12 @@
   <ItemGroup>
     <None Remove="Shared\Extensions\" />
     <None Remove="Shared\Projects\" />
+    <None Remove="Shared\AboutMe\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Shared\Extensions\" />
     <Folder Include="Shared\Projects\" />
+    <Folder Include="Shared\AboutMe\" />
   </ItemGroup>
     <ItemGroup>
     <None Remove="Shared\Experience\" />
