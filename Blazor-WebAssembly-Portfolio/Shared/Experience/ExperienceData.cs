@@ -11,7 +11,7 @@
 
 		public string Role { get; set; } = "";
 
-		public List<string> Description { get; set; } = new();
+		public string Description { get; set; } = "";
 
 		public string Date { get; set; } = "";
 

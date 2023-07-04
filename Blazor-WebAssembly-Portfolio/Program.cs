@@ -19,6 +19,12 @@ builder.Services.AddMudServices();
 
 //Reference: https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-7.0
 //App settings is automatically imported in blazor
+builder.Services.AddSingleton<AboutMeData>(
+	 provider =>
+	 {
+		 var config = provider.GetService<IConfiguration>();
+		 return config.GetSection("AboutMe").Get<AboutMeData>();
+	 });
 builder.Services.AddSingleton<ExperienceData>(
 	 provider =>
 	 {
@@ -31,11 +37,6 @@ builder.Services.AddSingleton<ProjectData>(
 		 var config = provider.GetService<IConfiguration>();
 		 return config.GetSection("Projects").Get<ProjectData>();
 	 });
-builder.Services.AddSingleton<AboutMeData>(
-	 provider =>
-	 {
-		 var config = provider.GetService<IConfiguration>();
-		 return config.GetSection("AboutMe").Get<AboutMeData>();
-	 });
+
 await builder.Build().RunAsync();
 

@@ -9,11 +9,8 @@
             <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
             <MudText Color="Color.Dark" Typo="Typo.subtitle1" GutterBottom="true">@Date</MudText>
             <MudText Color="Color.Dark" Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
-            @foreach(var desc in Body)
-            {
-                <MudText Typo="Typo.body2">@((MarkupString)desc)</MudText>
-            }
-            
+            <MudText Typo="Typo.body2">@((MarkupString)Body)</MudText>
+
         </MudPaper>
             @foreach (var chip in Attributes)
             {
@@ -32,7 +29,7 @@
     public string Subheading { get; set; } = "";
 
     [Parameter]
-    public List<string> Body { get; set; } = new();
+    public string Body { get; set; } = "";
 
     [Parameter]
     public string Date { get; set; } = "";
