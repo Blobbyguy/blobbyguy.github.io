@@ -5,19 +5,19 @@
         <MudText>@Date</MudText>
     </ItemOpposite>*@
     <ItemContent >
-        <MudPaper Elevation="0" Class="mt-n1">
-            <MudText Color="Color.Dark" Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
-            <MudText Color="Color.Dark" Typo="Typo.subtitle1" GutterBottom="true">@Date</MudText>
-            <MudText Color="Color.Dark" Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
-            <MudText Typo="Typo.body2">@((MarkupString)Body)</MudText>
-
-        </MudPaper>
+        <MudPaper Elevation="0" Class="mt-n1 mud-theme-primary">
+            <MudText Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
+            <MudText Typo="Typo.subtitle1" GutterBottom="true">@Date</MudText>
+            <MudText Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
+            <MudText Typo="Typo.body1">@((MarkupString)Body)</MudText>
             @foreach (var chip in Attributes)
             {
-                <MudChip>
+                <MudChip Class="">
                     @chip
                 </MudChip>
             }
+        </MudPaper>
+
     </ItemContent>
 </MudTimelineItem>
 

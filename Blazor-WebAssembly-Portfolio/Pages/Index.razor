@@ -4,17 +4,26 @@
 @using BlazorWebAssemblyPortfolio.Shared.Projects
 @using BlazorWebAssemblyPortfolio.Shared.AboutMe
 <!--<MudStack Spacing="5">-->
+
 <Landing />
-<MudContainer MaxWidth="MaxWidth.Large" Class="d-flex align-start">
+<MudContainer MaxWidth="MaxWidth.Large" Class="d-flex align-start mud-theme-background">
     <MudItem Class="sticky" style="width: 100%; top: 20%; padding-left: 10%;">
         <Blurb />
         <Contents />
     </MudItem>
     <MudItem style="width:100%;">
         <MudStack>
-            <AboutMe />
-            <Experience />
-            <Projects />
+            <MudPaper Class="mud-theme-primary rounded-lg" Elevation="3">
+                <AboutMe />
+            </MudPaper>
+
+            <MudPaper Class="mud-theme-primary rounded-lg" Elevation="3">
+                <Experience />
+            </MudPaper>
+
+            <MudPaper Class="mud-theme-primary rounded-lg" Elevation="3">
+                <Projects />
+            </MudPaper>
         </MudStack>
     </MudItem>
 </MudContainer>

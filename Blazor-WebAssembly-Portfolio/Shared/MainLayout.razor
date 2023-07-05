@@ -5,26 +5,28 @@
 @*<MudSnackbarProvider />*@
 
 <MudLayout>
-	<MudMainContent Style="padding: 0px;">
-		@Body
-	</MudMainContent>
+    <MudMainContent Style="padding: 0px;">
+        @Body
+    </MudMainContent>
 </MudLayout>
 
 @code{
-	//https://mudblazor.com/customization/default-theme#palette
-	private MudTheme _theme = new()
-	{
-		Palette = new PaletteLight()
-		{
-			Primary = Colors.Green.Default
-		},
+    //https://mudblazor.com/customization/default-theme#palette
+    private MudTheme _theme = new()
+    {
+        Palette = new PaletteLight()
+        {
+            Primary = Colors.Teal.Darken1,
+            Background = Colors.Teal.Lighten3,
+            TextPrimary = Colors.Shades.White
+        },
 
-		PaletteDark = new PaletteDark()
-		{
+        PaletteDark = new PaletteDark()
+        {
 
-		}
-	};
+        }
+    };
 
-	private bool _isDarkMode = false;
+    private bool _isDarkMode = false;
 }
 
