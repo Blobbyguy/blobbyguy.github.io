@@ -17,6 +17,8 @@
 
 		public string url { get; set; } = "";
 
+		public string source { get; set; } = "";
+
 		public string imagePath { get; set; } = "";
 	}
 }

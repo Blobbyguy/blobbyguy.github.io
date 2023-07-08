@@ -11,6 +11,10 @@
 	}
 }
 
+.unselectable {
+	user-select: none;
+}
+
 .fadeIn{
 	opacity: 0%;
 	animation-name: fadeIn;

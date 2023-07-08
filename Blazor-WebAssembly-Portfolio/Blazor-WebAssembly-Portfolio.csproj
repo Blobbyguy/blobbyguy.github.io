@@ -36,6 +36,8 @@
     <Folder Include="Shared\Extensions\" />
     <Folder Include="Shared\Projects\" />
     <Folder Include="Shared\AboutMe\" />
+    <Folder Include="wwwroot\Images\" />
+    <Folder Include="wwwroot\Images\Projects\" />
   </ItemGroup>
     <ItemGroup>
     <None Remove="Shared\Experience\" />
@@ -47,6 +49,10 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Program.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\Images\" />
+    <Content Remove="wwwroot\Images\Projects\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\appsettings.json">
