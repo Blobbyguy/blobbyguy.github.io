@@ -1,7 +1,6 @@
 ﻿@namespace BlazorWebAssemblyPortfolio.Shared.AboutMe
 <MudStack Row="true" id="about">
     <MudText>
-        Insert text here:
-        @(config.Things)
+        @((MarkupString)config.Things)
     </MudText>
 </MudStack>
