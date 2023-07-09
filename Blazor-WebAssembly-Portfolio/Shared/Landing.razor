@@ -7,9 +7,8 @@
     </MudStack>
     <h2 class="fadeIn" style="animation-delay: 3s;">A Work In Progress</h2>
 
-    <MudButton Class="fadeIn">A button to scroll down that does not work </MudButton>
+    <MudButton OnClick="ScrollToAbout" Class="fadeIn">A button to scroll down that does not work </MudButton>
 </MudStack>
-
 
 @implements IDisposable
 @code{
@@ -30,6 +29,11 @@
         showBar = true;
 
         base.OnInitialized();
+    }
+
+    private async void ScrollToAbout()
+    {
+        await javaScript.InvokeAsync<string>("scrollToAbout");
     }
 
     private async void StartBar()

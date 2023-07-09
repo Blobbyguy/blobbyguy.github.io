@@ -1,8 +1,23 @@
 ﻿
-
-@inject NavigationManager NavigationManager
+@inject IJSRuntime javaScript;
 <MudStack>
-    <a onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">about</a>
-    <a onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">experience</a>
-    <a onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">projects</a>
+    <MudButton OnClick="ScrollToAbout">About</MudButton>
+    <MudButton OnClick="ScrollToExperience">experience</MudButton>
+    <MudButton OnClick="ScrollToProjects">projects</MudButton>
 </MudStack>
+
+@code{
+    //Required due to blazor and javascript not working together correctly with anchors.
+    private void ScrollToAbout()
+    {
+        javaScript.InvokeAsync<string>("scrollToAbout");
+    }
+    private void ScrollToProjects()
+    {
+        javaScript.InvokeAsync<string>("scrollToProjects");
+    }
+    private void ScrollToExperience()
+    {
+        javaScript.InvokeAsync<string>("scrollToExperience");
+    }
+}
