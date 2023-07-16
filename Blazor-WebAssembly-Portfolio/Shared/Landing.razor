@@ -1,13 +1,13 @@
 ﻿@inject IJSRuntime javaScript;
-<MudStack Style="height:100vh; width: 100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
+<MudStack Style="height:75vh; width: 100%;" Justify="Justify.Center" AlignItems="AlignItems.Center">
     <h2 class="fadeIn">Welcome to my portfolio</h2>
     <MudStack Row="true" Spacing="0">
         <h1 class="landingHeading fadeIn unselectable" style="animation-delay:1s">@greeting</h1>
-        <h1 class="landingHeading fadeIn" style="animation-delay: 1s; opacity: @barOpacity;">@bar</h1>
+        <h1 class="landingHeading" style="opacity: @barOpacity;">|</h1>
     </MudStack>
-    <h2 class="fadeIn" style="animation-delay: 1.5s;">A Work In Progress</h2>
+    @*<h2 class="fadeIn" style="animation-delay: 1.5s;">A Work In Progress</h2>*@
 
-    <MudButton OnClick="ScrollToAbout" style="animation-delay: 2s;" class="fadeIn">Enter.</MudButton>
+    @*<MudButton OnClick="ScrollToAbout" style="animation-delay: 2s;" class="fadeIn">Enter.</MudButton>*@
 </MudStack>
 
 @implements IDisposable
@@ -18,7 +18,6 @@
     PeriodicTimer? _barTimer;
 
     private bool showBar = false;
-    private string bar => "|";
     private int barOpacity => showBar ? 1 : 0;
 
     private bool scrollAnimation = true;
@@ -38,7 +37,7 @@
 
     private async void StartBar()
     {
-        _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.2));
+        _barTimer = new PeriodicTimer(TimeSpan.FromSeconds(0.5));
 
         while (await _barTimer.WaitForNextTickAsync())
         {
