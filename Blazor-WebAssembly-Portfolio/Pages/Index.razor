@@ -5,9 +5,23 @@
 @using BlazorWebAssemblyPortfolio.Shared.Projects
 @using BlazorWebAssemblyPortfolio.Shared.AboutMe
 
+
 <style>
     .Torch {
         background: radial-gradient( 800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.06), transparent 40% );
+    }
+
+    .card {
+        border-width: 5px;
+        border-color: transparent;
+        transition: 0.3s;
+        
+
+    }
+
+    .card:hover{
+        border-style: solid;
+        border-color: white;
     }
 </style>
 
@@ -20,15 +34,15 @@
         </MudItem>
         <MudItem style="width:100%;">
             <MudStack>
-                <MudPaper id="about" Class="mud-theme-primary rounded-lg" Elevation="3">
+                <MudPaper id="about" Class="card mud-theme-primary rounded-lg" Elevation="3">
                     <AboutMe />
                 </MudPaper>
 
-                <MudPaper id="experience" Class="mud-theme-primary rounded-lg" Elevation="3">
+                <MudPaper id="experience" Class="card mud-theme-primary rounded-lg" Elevation="3">
                     <Experience />
                 </MudPaper>
 
-                <MudPaper id="projects" Class="mud-theme-primary rounded-lg" Elevation="3">
+                <MudPaper id="projects" Class="card mud-theme-primary rounded-lg" Elevation="3">
                     <Projects />
                 </MudPaper>
             </MudStack>
