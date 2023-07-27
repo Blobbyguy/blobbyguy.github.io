@@ -9,7 +9,7 @@
                 <MudImage Width="200" ObjectFit="ObjectFit.Contain" Src="@item.imagePath" Alt="Image of Project"></MudImage>
                 <MudContainer>
 
-                    <MudLink Href="@item.url"> @item.Title</MudLink>
+                    <MudLink Href="@item.url" Typo="Typo.h6" Underline="Underline.Always" Class="mud-theme-primary"> @item.Title</MudLink>
                     <MudText Typo="Typo.subtitle1">@item.Subtitle</MudText>
                     <MudText Typo="Typo.body2">@((MarkupString)item.Description)</MudText>
                     <div>
