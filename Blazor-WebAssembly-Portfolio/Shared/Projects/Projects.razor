@@ -8,7 +8,8 @@
             <MudStack  Row="true" Spacing="0">
                 <MudImage Width="200" ObjectFit="ObjectFit.Contain" Src="@item.imagePath" Alt="Image of Project"></MudImage>
                 <MudContainer>
-                    <MudText Typo="Typo.h6">@item.Title</MudText>
+
+                    <MudLink Href="@item.url"> @item.Title</MudLink>
                     <MudText Typo="Typo.subtitle1">@item.Subtitle</MudText>
                     <MudText Typo="Typo.body2">@((MarkupString)item.Description)</MudText>
                     <div>
