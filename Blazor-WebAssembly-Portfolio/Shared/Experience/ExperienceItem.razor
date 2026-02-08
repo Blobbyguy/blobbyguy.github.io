@@ -4,15 +4,21 @@
     @*<ItemOpposite>
         <MudText>@Date</MudText>
     </ItemOpposite>*@
-    <ItemContent >
-        <MudPaper Elevation="0" Class="pr-4 mud-theme-primary">
-            <MudText Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
+    <ItemContent>
+        <MudPaper Elevation="0" Class="experience-card pr-4 mud-theme-primary">
+            <div class="experience-heading-row">
+                <MudText Typo="Typo.h6" GutterBottom="true">@Heading</MudText>
+                @if (IsCurrentEmployment)
+                {
+                    <MudChip Color="Color.Success" Variant="Variant.Filled" Size="Size.Small" Class="current-employment-chip">Current</MudChip>
+                }
+            </div>
             <MudText Typo="Typo.subtitle1" GutterBottom="true">@Date</MudText>
             <MudText Typo="Typo.subtitle2" GutterBottom="true">@Subheading</MudText>
             <MudText Typo="Typo.body1">@((MarkupString)Body)</MudText>
             @foreach (var chip in Attributes)
             {
-                <MudChip Class="">
+                <MudChip>
                     @chip
                 </MudChip>
             }
@@ -34,6 +40,8 @@
     public string Date { get; set; } = "";
 
     [Parameter]
-    public List<String> Attributes { get; set; } = new();
-}
+    public List<string> Attributes { get; set; } = new();
 
+    [Parameter]
+    public bool IsCurrentEmployment { get; set; }
+}
