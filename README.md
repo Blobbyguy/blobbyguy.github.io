@@ -1,7 +1,7 @@
-#This a WIP Portfolio Project written in .Net 7 Blazor
+# Blazor Portfolio
 
-# Blazor-Portfolio
+This repository contains a work-in-progress portfolio project built with .NET 7 and Blazor.
 
-Portfolio
+## Live Site
 
-URL: https://blobbyguy.gitlab.io
+- https://blobbyguy.gitlab.io
